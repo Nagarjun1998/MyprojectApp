@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+        
+</head>
+
+<body>
+<div class="page-wrapper p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">User Registration Info</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group">
+                        <input class="input--style-2" type="email" formControlName="email" placeholder="Email or Username" name="email" [(ngModel)]="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                
+                    <div class="input-group">
+                        <input class="input--style-2" type="password" formControlName="password" placeholder="Password" name="password" id="password" [(ngModel)]="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                   
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>                  
+                    </div>
+                    
+                    
+                    <div class="input-group">
+                        <input class="input--style-2" type="password" placeholder="Confirm Password" name="re_password" id="re_password" formControlName="re_password" [(ngModel)]="re_password" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }">
+                        <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.re_password.errors.required">Password is required</div>
+                            <div *ngIf="f.re_password.errors.mustMatch">Passwords must match</div>
+                        </div> 
+                    </div>
+                    
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" type="submit" >Submit</button>
+                    </div>
+                    <div style="margin-top: 23px;
+                    margin-bottom: -28px;">
+                        <p>Already have an account?&nbsp;<a routerLink="../../login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+a{
+    background: #57b846;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 40px;
+    display: inline-block;
+    padding: 8px 25px;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    font-size: 18px;
+    font-weight: 400;
+    width: 150px;
+    margin-left: 60px;
+    text-align: center;
+}

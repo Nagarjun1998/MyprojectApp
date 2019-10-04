@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+        
+</head>
+
+<body>
+<div class="page-wrapper p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Mentor Registration Info</h2>
+                <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group" style="float: left">
+                        <input class="input--style-2" type="text" formControlName="name" placeholder="Full Name" name="name" [(ngModel)]="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">  
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.email.name.required">Email is required</div>
+                            <div *ngIf="f.email.name.required.maxlength">Email must be max 15 characters</div>
+                            <div *ngIf="f.name.errors.pattern">Name must have characters only</div>
+                        </div>
+                    </div> 
+                    <div class="input-group" style="float: left;padding-left:40px">
+                            <input class="input--style-2" type="email" formControlName="email" placeholder="Email" name="email" [(ngModel)]="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">  
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback" style="color: red;">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div> 
+                    
+                    <div class="input-group" style="float: left">
+                    <input class="input--style-2" type="password" formControlName="password" placeholder="Password" name="mpassword" id="mpassword" [(ngModel)]="mpassword" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback" style="color: red;">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div> 
+                </div>
+
+                    <div class="input-group" style="float: left;padding-left: 40px;">
+                        <input class="input--style-2" type="password" placeholder="Confirm Password" name="re_password" id="re_password" formControlName="re_password" [(ngModel)]="re_password" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }">
+                        <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.re_password.errors.required">Password is required</div>
+                            <div *ngIf="f.re_password.errors.mustMatch">Passwords must match</div>
+                        </div> 
+                    </div>
+
+                    <div class="input-group" style="float: left; ">
+                        <input class="input--style-2" list="host" type="text" placeholder="Technologies" name="technologies"  [(ngModel)]="technology" formControlName="technology" [ngClass]="{ 'is-invalid': submitted && f.technology.errors }">
+                        <datalist id='host'>
+                            <option value="Java"></option>
+                            <option value="C"></option>
+                            <option value="C++"></option>
+                            <option value="Dotnet Fullstack"></option>
+                            <option value="Java Fullstack"></option>
+                            <option value="Mean Fullstack"></option>
+                            <option value="Angular 7"></option>
+                            <option value="Node Js"></option>
+                            <option value="Andriod"></option>
+                        </datalist>
+                        <div *ngIf="submitted && f.technology.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.technology.errors.required">Technology is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group" style="float: left;padding-left:40px"> 
+                            <input class="input--style-2" list="faci" type="text" placeholder="Facilities" name="facility" [(ngModel)]="facility" formControlName="facility" [ngClass]="{ 'is-invalid': submitted && f.facility.errors }">
+                            <datalist id='faci'>
+                                    <option value="Cloud Labs"></option>
+                                    <option value="Rooms"></option>
+                                    <option value="Rest room"></option>
+                                    <option value="Laptops"></option>
+                                    <option value="Cafeteria"></option>
+                            </datalist>
+                            <div *ngIf="submitted && f.facility.errors" class="invalid-feedback" style="color: red;">
+                                    <div *ngIf="f.facility.errors.required">Facility is required</div>
+                            </div>
+                        </div>
+                   
+                    <div class="input-group" style="float: left;">
+                        <input class="input--style-2" type="number" placeholder="Years Of Experience" name="experience" [(ngModel)]="experience" formControlName="experience" [ngClass]="{ 'is-invalid': submitted && f.experience.errors }">
+                        <div *ngIf="submitted && f.experience.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.experience.errors.required">Minimum 1 year is required</div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="input-group" style="float: left;padding-left: 40px">
+                        <input class="input--style-2" type="url" placeholder="LinkedIn Url" name="linkurl" [(ngModel)]="linkurl" formControlName="linkurl" [ngClass]="{ 'is-invalid': submitted && f.linkurl.errors }">
+                        <div *ngIf="submitted && f.linkurl.errors" class="invalid-feedback" style="color: red;">
+                            <div *ngIf="f.linkurl.errors.required">LinkinUrl is required</div>
+                        </div>    
+                    </div>
+                    <div class="input-group" style="float: left;">
+                            <input class="input--style-2" list="slot" type="text" placeholder="Select Your Preferable TimeSlot" name="timestart" [(ngModel)]="timestart" formControlName="timestart" [ngClass]="{ 'is-invalid': submitted && f.timestart.errors }">
+                            <datalist id='slot'>
+                                <option value="08:30AM - 10:30AM"></option>
+                                <option value="09:00AM - 11:00AM"></option>
+                                <option value="10:30AM - 12:30PM"></option>
+                                <option value="11:00AM - 1:00PM"></option>
+                                <option value="11:30AM - 01:30PM"></option>
+                                <option value="02:00PM - 04:00PM"></option>
+                                <option value="03:00PM - 05:00AM"></option>
+                                <option value="04:00PM - 06:00PM"></option>
+                                <option value="05:30PM - 07:30PM"></option>
+                                <option value="06:00PM - 08:00PM"></option>
+                            </datalist>   
+                            <div *ngIf="submitted && f.timestart.errors" class="invalid-feedback" style="color: red;">
+                                   <div *ngIf="f.timestart.errors.required">Time Slot is required</div>
+                               </div>
+                           </div>
+                    <div class="input-group"style="float: left;padding-left: 40px" >
+                        <input class="input--style-2" type="text" placeholder="Contact No" name="contactno" [(ngModel)]="contactno"formControlName="contactno" [ngClass]="{ 'is-invalid': submitted && f.contactno.errors }">
+                        <div *ngIf="submitted && f.contactno.errors" class="invalid-feedback" style="color: red;">
+                         <div *ngIf="f.contactno.errors.required">Contact no. is required</div>
+                         <div *ngIf="f.contactno.errors.pattern">Contact no. should have Numeric values</div>
+                         <div *ngIf="f.contactno.errors.minlength">Contact no. must be at least 10 characters</div>
+                        </div>
+                    </div>
+                    
+   
+                       
+                    <!-- <div  > -->
+                        <button  class="btn btn--radius btn--green" type="submit">Submit</button>
+                    <!-- </div> -->
+                    <div>
+                        <p style="margin-top: 12px;">Already have an account?&nbsp; <a routerLink="../../login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

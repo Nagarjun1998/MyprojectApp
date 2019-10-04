@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  
+</head>
+<body >
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" style="font-size: 22px;" >Train@cademy</a>
+      </div>
+      <ul class="nav navbar-nav"  style="font-size: 20px;">
+        <li ><a *ngIf="!myservice.loggedIn() || !myservice.isLogin()" routerLink="home">Home</a> </li>
+        <li ><a *ngIf="myservice.loggedIn() && myservice.isLogin() && !myservice.isMentor()" routerLink="udashboard">MyDashboard</a> </li>
+        <li ><a *ngIf="myservice.loggedIn() && myservice.isLogin() && !myservice.isMentor()" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" >Search</a></li>
+          
+        <li ><a *ngIf="myservice.loggedIn() && myservice.isLogin() &&  myservice.isMentor()" routerLink="mdashboard">MyDashboard</a> </li>
+
+        <li ><a  *ngIf="!myservice.loggedIn() || !myservice.isLogin()" href="#">About Us</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;" >
+        <li><a *ngIf="!myservice.loggedIn() || !myservice.isLogin()"routerLink="/signup"  style="font-size: 19px;"><span class="glyphicon glyphicon-user" id="icon"></span> Sign Up</a>
+        
+      </li>
+        <li><a *ngIf="!myservice.loggedIn() || !myservice.isLogin()"routerLink="/login" style="font-size: 20px;"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a *ngIf="myservice.loggedIn() && myservice.isLogin()" style="cursor: pointer;"  (click)="myservice.logoutUser()" style="font-size: 20px;"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="myservice.loggedIn() && myservice.isLogin() && !myservice.isMentor()" id="collapseExample" [ngbCollapse]="!isCollapsed">
+      
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                <input id="search" list="host" type="text" formControlName="technology" [(ngModel)]="technology" placeholder="Which Technology are you looking for?">
+                <datalist id='host'>
+                    <option value="Java"></option>
+                    <option value="C"></option>
+                    <option value="C++"></option>
+                    <option value="Dotnet Fullstack"></option>
+                    <option value="Java Fullstack"></option>
+                    <option value="Mean Fullstack"></option>
+                    <option value="Angular 7"></option>
+                    <option value="Node Js"></option>
+                    <option value="Andriod"></option>
+                </datalist>
+                </div>
+                <div class="input-field second-wrap">
+                <input list="slot" type="text" placeholder="TimeSlot" formControlName="timestart" [(ngModel)]="timestart">
+                <datalist id='slot'>
+                    <option value="08:30AM - 10:30AM"></option>
+                    <option value="09:00AM - 11:00AM"></option>
+                    <option value="10:30AM - 12:30PM"></option>
+                    <option value="11:00AM - 1:00PM"></option>
+                    <option value="11:30AM - 01:30PM"></option>
+                    <option value="02:00PM - 04:00PM"></option>
+                    <option value="03:00PM - 05:00AM"></option>
+                    <option value="04:00PM - 06:00PM"></option>
+                    <option value="05:30PM - 07:30PM"></option>
+                    <option value="06:00PM - 08:00PM"></option>
+                </datalist>  
+              </div>
+                <div class="input-field third-wrap">
+                <button class="btn-search" type="button" (click)="onSubmit()">Search</button>
+                </div>
+                </div>
+        </div>
+      </form>
+    
+</body>
+</html>
+
+
+<flash-messages></flash-messages>
+<router-outlet></router-outlet>
+
+
+

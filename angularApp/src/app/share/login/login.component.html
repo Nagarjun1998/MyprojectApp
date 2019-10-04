@@ -1,0 +1,44 @@
+
+<br>
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+
+<body>
+<div class="page-wrapper p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading">
+
+            </div>
+               <div class="card-body">
+                    <h2 class="title">Login</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+                    <div class="input-group">
+                      <input class="input--style-2" type="email"  formControlName="email" placeholder="Email or Username" name="email" [(ngModel)]="email">
+                      
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-2" type="password" formControlName="password" placeholder="Password" name="password" [(ngModel)]="password">
+                        
+                            
+                    </div>
+                    
+                    <div class="p-t-30">
+                        <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                    </div>
+                    <br>
+                    <div>
+                    <p>New here?&nbsp; <a routerLink="../signup">Register</a></p>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!-- <router-outlet></router-outlet> -->
